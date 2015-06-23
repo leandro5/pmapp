@@ -1,0 +1,94 @@
+<div class="view">
+	<div class="container">
+		<div class="row">
+			<nav class= "navbar navbar-default" role= "navigation" >
+				<div class= "navbar-header" >
+					<a class= "navbar-brand" href= "#/contatos"><i class="glyphicon glyphicon-th-large"></i> Contatos </a>
+					<a data-ng-show="contato._id" class= "navbar-brand" href= "#/edit-contato/0"><i class="glyphicon glyphicon-plus"></i> Criar Contato </a>
+					<a data-ng-show="contato.id" class= "navbar-brand pull-right"><i class="glyphicon glyphicon-edit"></i> Editando Contato Número: {{contato.id}}</a>
+				</div>
+			</nav>
+			<header>
+				<h3>{{title}}</h3>
+			</header>
+			<div class="col-md-12">
+
+				<form role="form" name="myForm" class="form-horizontal">
+					<div class="row">
+						<div class= "form-group" ng-class="{error: myForm.firstName.$invalid}">
+							<label class= "col-md-2"> First Name </label>
+							<div class="col-md-4">
+								<input name="nome" data-ng-model="contato.nome" type= "text" class= "form-control" placeholder="Nome" required/>
+								<span ng-show="myForm.nome.$dirty && myForm.nome.$invalid" class="help-inline">Nome Obrigatório</span>
+							</div>
+						</div>
+
+						<div class= "form-group">
+							<label class= "col-md-2">Endereço </label>
+							<div class="col-md-4">
+								<input data-ng-model="contato.endereco" type= "text" class= "form-control" placeholder= "Endereço"/>
+							</div>
+						</div>
+
+						<div class= "form-group" ng-class="{error: myForm.phoneNumber.$invalid}">
+							<label class= "col-md-2"> Telefone </label>
+								<div class="col-md-4">
+								<input name="telefone" data-ng-model="contato.telefone" type= "text" class= "form-control" placeholder="telefone" required/>
+								<span ng-show="myForm.telefone.$dirty && myForm.telefone.$invalid" class="help-inline">Telefone</span>
+							</div>
+						</div>
+
+						<div class= "form-group">
+							<label class= "col-md-2"> Email </label>
+							<div class="col-md-4">
+								<input name="email" data-ng-model="contato.email" type= "email" class= "form-control" placeholder="Enter email" required/>
+								<span ng-show="myForm.email.$dirty && myForm.email.$invalid && !myForm.email.$error.email" class="help-inline">Email Required</span>
+								<span ng-show="myForm.email.$error.email" class="help-inline">Email is not valid</span>
+							</div>
+						</div>
+
+						<div class= "form-group">
+							<label class= "col-md-2">Twitter </label>
+							<div class="col-md-4">
+								<input data-ng-model="contato.twitterHandle" type= "text" class= "form-control" placeholder= "Twitter"/>
+							</div>
+						</div>
+
+						<div class= "form-group">
+							<label class= "col-md-2">Facebook </label>
+							<div class="col-md-4">
+								<input data-ng-model="contato.facebookProfile" type= "text" class= "form-control" placeholder= "Facebook"/>
+							</div>
+						</div>
+
+						<div class= "form-group">
+							<label class= "col-md-2">LinkedIn </label>
+							<div class="col-md-4">
+								<input data-ng-model="contato.linkedInProfile" type= "text" class= "form-control" placeholder= "LinkedIn"/>
+							</div>
+						</div>
+
+						<div class= "form-group">
+							<label class= "col-md-2">Google Plus </label>
+							<div class="col-md-4">
+								<input data-ng-model="contato.googlePlusProfile" type= "text" class= "form-control" placeholder= "Google Plus"/>
+							</div>
+						</div>
+
+						<div class= "form-group">
+							<label class= "col-md-2"></label>
+							<div class="col-md-6">
+								<a href="#/" class="btn">Cancelar</a>
+								<button data-ng-click="saveContato(contato);"
+								ng-disabled="isClean() || myForm.$invalid"
+								class="btn btn-primary">{{buttonText}}</button>
+								<button data-ng-click="deleteContato(contato)"
+								data-ng-show="contato.id" class="btn btn-warning">Excluir</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
